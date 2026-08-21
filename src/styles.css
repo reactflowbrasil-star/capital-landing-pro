@@ -19,6 +19,14 @@
  */
 
 @theme inline {
+  --color-kap-navy: var(--kap-navy);
+  --color-kap-navy-deep: var(--kap-navy-deep);
+  --color-kap-blue: var(--kap-blue);
+  --color-kap-cyan: var(--kap-cyan);
+  --color-kap-green: var(--kap-green);
+  --color-kap-lime: var(--kap-lime);
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -63,6 +71,12 @@
 
 :root {
   --radius: 0.625rem;
+  --kap-navy: oklch(0.28 0.11 258);
+  --kap-navy-deep: oklch(0.21 0.09 259);
+  --kap-blue: oklch(0.52 0.16 253);
+  --kap-cyan: oklch(0.78 0.14 220);
+  --kap-green: oklch(0.72 0.19 145);
+  --kap-lime: oklch(0.79 0.16 133);
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
@@ -141,4 +155,18 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+}
+
+@layer base {
+  body { font-family: var(--font-sans); }
+}
+
+@utility kap-hero-gradient {
+  background:
+    radial-gradient(120% 90% at 60% 30%, color-mix(in oklch, var(--kap-blue) 70%, transparent) 0%, transparent 60%),
+    linear-gradient(140deg, var(--kap-navy-deep) 0%, var(--kap-navy) 45%, var(--kap-navy-deep) 100%);
+}
+
+@utility kap-clip-tri-tl {
+  clip-path: polygon(0 0, 100% 0, 0 100%);
 }
